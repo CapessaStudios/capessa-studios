@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://capessastudios.github.io/capessa-studios/sitemap.xml
+Disallow: /admin.html
+Disallow: /firebase-import.json
+Disallow: /firebase-rules.json
