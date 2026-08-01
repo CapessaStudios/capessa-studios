@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculadora de probabilidades do Ludo Chaos — dados, capturas, cartas especiais e alcance de peças." />
+  <title>Calculadora Ludo Chaos — Capessa Studios Tools</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onerror="this.onerror=null;this.href='../../assets/fonts/fontawesome/css/all.min.css';" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+  <link rel="stylesheet" href="../../css/pages.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+  <script>(function(){ const t=localStorage.getItem('cs_theme'); if(t) document.documentElement.setAttribute('data-theme',t); })();</script>
+
+  <style>
+    /* ── Tool layout ───────────────────────────────── */
+    .tool-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media(max-width:768px){ .tool-layout{ grid-template-columns:1fr; } }
+
+    .calc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+    .calc-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--gold);
+      margin: 0 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-card h3 i { font-size: 0.9rem; }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .input-row label {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      min-width: 130px;
+    }
+    .input-row input[type=number],
+    .input-row select {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.88rem;
+      font-family: var(--font-mono);
+      width: 90px;
+    }
+    .input-row input[type=range] {
+      flex: 1;
+      min-width: 80px;
+      accent-color: var(--gold);
+    }
+    .range-val {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--gold);
+      min-width: 28px;
+      text-align: right;
+    }
+
+    /* Results */
+    .result-block {
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--bg-3);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .result-main {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-label {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .result-sub {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* Dice visual */
+    .dice-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .die-face {
+      width: 48px; height: 48px;
+      background: var(--surface-h);
+      border: 1px solid var(--border-h);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--text-2);
+      transition: all .2s;
+    }
+    .die-face.hit { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,.12); }
+    .die-face.rolling { animation: roll .4s ease; }
+    @keyframes roll { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
+
+    /* Bar chart */
+    .bar-chart { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .bar-row { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; }
+    .bar-label { font-family: var(--font-mono); color: var(--text-3); min-width: 22px; text-align: right; }
+    .bar-track { flex: 1; height: 8px; background: var(--bg-3); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width .4s; }
+    .bar-pct { font-family: var(--font-mono); color: var(--text-2); font-size: 0.7rem; min-width: 38px; }
+
+    /* Cards section */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .sp-card {
+      padding: 14px 16px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all .2s;
+      position: relative;
+    }
+    .sp-card:hover, .sp-card.selected {
+      border-color: var(--gold);
+      background: rgba(212,175,55,.08);
+    }
+    .sp-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 8px; right: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .sp-card-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .sp-card-effect {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+    .sp-card-bonus {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    /* Roll button */
+    .roll-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #1a1a1a;
+      border: none;
+      border-radius: var(--radius);
+      padding: 12px 22px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all .2s;
+      margin-top: 16px;
+    }
+    .roll-btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .roll-btn:active { transform: translateY(0); }
+  </style>
+</head>
+<body class="page-enter">
+
+<!-- NAV -->
+<nav id="navbar" role="navigation">
+  <div class="container nav-inner">
+    <a href="../../index.html" class="nav-logo">
+      <div class="logo-icon">CS</div>
+      <div class="logo-text">CAPESSA<span>STUDIOS</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Início</a></li>
+      <li><a href="../../pages/games.html">Jogos</a></li>
+      <li><a href="../../pages/apps.html">Aplicações</a></li>
+      <li><a href="../../pages/tools.html" class="active">Tools</a></li>
+      <li><a href="../../pages/lab.html">Lab</a></li>
+      <li><a href="../../pages/news.html">Notícias</a></li>
+      <li><a href="../../pages/about.html">Sobre</a></li>
+      <li><a href="../../pages/contact.html">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="nav-search">
+        <i class="fas fa-search search-icon"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <button class="nav-btn" id="theme-toggle" aria-label="Alternar tema"><i class="fas fa-sun"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="mobile-menu">
+  <a href="../../index.html"><i class="fas fa-home fa-fw"></i> Início</a>
+  <a href="../../pages/games.html"><i class="fas fa-gamepad fa-fw"></i> Jogos</a>
+  <a href="../../pages/apps.html"><i class="fas fa-mobile-alt fa-fw"></i> Aplicações</a>
+  <a href="../../pages/tools.html"><i class="fas fa-wrench fa-fw"></i> Tools</a>
+  <a href="../../pages/lab.html"><i class="fas fa-flask fa-fw"></i> Lab</a>
+  <a href="../../pages/news.html"><i class="fas fa-newspaper fa-fw"></i> Notícias</a>
+  <a href="../../pages/about.html"><i class="fas fa-building fa-fw"></i> Sobre</a>
+  <a href="../../pages/contact.html"><i class="fas fa-envelope fa-fw"></i> Contacto</a>
+  <div class="mobile-search"><input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" /></div>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <nav class="breadcrumb" aria-label="Localização">
+          <a href="../../index.html">Início</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <a href="../../pages/tools.html">Tools</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span>Calculadora Ludo Chaos</span>
+        </nav>
+        <h1 class="page-title">
+          <span class="page-title-icon" aria-hidden="true"><i class="fas fa-dice"></i></span>
+          Calculadora Ludo Chaos
+        </h1>
+        <p class="page-desc">Probabilidades de dados, hipóteses de captura, alcance de peças e bónus de cartas especiais — tudo calculado ao vivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="tool-layout">
+
+        <!-- ── COLUNA 1 ── -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Simulador de dados -->
+          <div class="calc-card reveal">
+            <h3><i class="fas fa-dice"></i> Simulador de Dados</h3>
+
+            <div class="input-row">
+              <label>Nº de dados</label>
+              <input type="number" id="num-dice" value="1" min="1" max="4"
+                     oninput="updateDiceUI()" />
+            </div>
+            <div class="input-row">
+              <label>Faces por dado</label>
+              <select id="dice-faces" onchange="updateDiceUI()">
+                <option value="6" selected>D6 (padrão)</option>
+                <option value="4">D4</option>
+                <option value="8">D8</option>
+                <option value="12">D12</option>
+              </select>
+            </div>
+
+            <div class="dice-row" id="dice-visual">
+              <div class="die-face">—</div>
+            </div>
+
+            <button class="roll-btn" onclick="rollDice()" id="roll-btn">
+              <i class="fas fa-dice-d6"></i> Lançar Dados
+            </button>
+
+            <div class="result-block" id="roll-result" style="display:none;">
+              <div class="result-main" id="roll-total">—</div>
+              <div class="result-label">Total</div>
+              <div class="result-sub" id="roll-detail"></div>
+            </div>
+          </div>
+
+          <!-- Distribuição de probabilidades -->
+          <div class="calc-card reveal">
+            <h3><i class="fas fa-chart-bar"></i> Distribuição de Probabilidades</h3>
+            <div class="input-row">
+              <label>Dados (D6)</label>
+              <input type="number" id="dist-dice" value="1" min="1" max="3"
+                     oninput="updateDistChart()" />
+            </div>
+            <div class="bar-chart" id="dist-chart"></div>
+          </div>
+
+        </div>
+
+        <!-- ── COLUNA 2 ── -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Probabilidade de captura -->
+          <div class="calc-card reveal">
+            <h3><i class="fas fa-crosshairs"></i> Hipótese de Captura</h3>
+            <p style="font-size:.82rem;color:var(--text-2);margin-bottom:14px;">
+              Qual a probabilidade de a tua peça capturar o adversário com um lançamento de D6?
+            </p>
+            <div class="input-row">
+              <label>Casas até ao alvo</label>
+              <input type="range" id="dist-target" min="1" max="6" value="3"
+                     oninput="updateCapture()" />
+              <span class="range-val" id="dist-target-val">3</span>
+            </div>
+            <div class="input-row">
+              <label>Peças em jogo</label>
+              <input type="number" id="pieces-active" value="1" min="1" max="4"
+                     oninput="updateCapture()" />
+            </div>
+            <div class="result-block">
+              <div class="result-main" id="capture-pct">—</div>
+              <div class="result-label">probabilidade de captura (1 peça)</div>
+              <div class="result-sub" id="capture-detail"></div>
+            </div>
+          </div>
+
+          <!-- Bónus de cartas especiais -->
+          <div class="calc-card reveal">
+            <h3><i class="fas fa-cards-blank"></i> Cartas Especiais</h3>
+            <p style="font-size:.82rem;color:var(--text-2);margin-bottom:14px;">
+              Seleciona uma carta para ver o seu efeito nas probabilidades do dado atual.
+            </p>
+            <div class="cards-grid" id="special-cards"></div>
+            <div class="result-block" id="card-result" style="margin-top:16px;">
+              <div class="result-main" id="card-bonus-val">—</div>
+              <div class="result-label" id="card-bonus-label">seleciona uma carta</div>
+              <div class="result-sub" id="card-bonus-detail"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">CS</div>
+          <div class="logo-text">CAPESSA<span>STUDIOS</span></div>
+        </div>
+        <p class="footer-tagline">Transformando ideias em experiências digitais desde 2024.</p>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Produtos</h3>
+        <ul class="footer-links">
+          <li><a href="../../pages/games.html">Jogos</a></li>
+          <li><a href="../../pages/apps.html">Aplicações</a></li>
+          <li><a href="../../pages/tools.html">Tools</a></li>
+          <li><a href="../../pages/lab.html">Lab</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Estúdio</h3>
+        <ul class="footer-links">
+          <li><a href="../../pages/about.html">Sobre nós</a></li>
+          <li><a href="../../pages/news.html">Notícias</a></li>
+          <li><a href="../../pages/contact.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="../../pages/privacy.html">Privacidade</a></li>
+          <li><a href="../../pages/terms.html">Termos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="footer-year"></span> Capessa Studios. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/theme.js"></script>
+<script src="../../js/main.js"></script>
+<script src="../../js/loader.js"></script>
+<script src="../../js/search.js"></script>
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   CALCULADORA — LÓGICA
+   ============================================================ */
+
+/* ── Dados especiais do Ludo Chaos ─────────────────────────── */
+const SPECIAL_CARDS = [
+  { id:'turbo',   name:'Turbo',      effect:'+2 ao resultado do dado',          modifier: d=>d+2,      bonus:'+2',  desc:'Garante pelo menos 3 de movimento. Útil para sair da base.' },
+  { id:'reroll',  name:'Relançar',   effect:'Relança se o resultado for ≤ 2',    modifier: d=>d<=2?Math.ceil(Math.random()*6):d, bonus:'Relança', desc:'Elimina os piores resultados (1 e 2). Aumenta a média de ~3.5 para ~4.25.' },
+  { id:'double',  name:'Dobro',      effect:'Dobra o resultado (máx. 6)',        modifier: d=>Math.min(d*2,6), bonus:'×2 (máx 6)', desc:'Converte 1→2, 2→4, 3→6. Resultados ≥ 4 ficam em 6.' },
+  { id:'shield',  name:'Escudo',     effect:'Protege de captura 1 turno',        modifier: d=>d,        bonus:'Imune', desc:'Não altera o dado. Mas impede que te capturem neste turno.' },
+  { id:'steal',   name:'Roubar',     effect:'Copia o dado do adversário',        modifier: d=>d,        bonus:'Cópia', desc:'O teu resultado fica igual ao maior dado do adversário neste turno.' },
+  { id:'free',    name:'Casa Livre', effect:'Move para qualquer casa segura',    modifier: d=>d,        bonus:'Livre', desc:'Ignora o dado. Move qualquer peça para a casa segura mais vantajosa.' },
+];
+
+let selectedCard = null;
+let lastRoll     = [];
+
+/* ── Init ───────────────────────────────────────────────────── */
+function init() {
+  updateDiceUI();
+  updateDistChart();
+  updateCapture();
+  renderSpecialCards();
+}
+
+/* ── Simulador de dados ─────────────────────────────────────── */
+function updateDiceUI() {
+  const n = Math.max(1, Math.min(4, +document.getElementById('num-dice').value || 1));
+  const faces = +document.getElementById('dice-faces').value || 6;
+  const visual = document.getElementById('dice-visual');
+  visual.innerHTML = Array.from({length: n}, () => '<div class="die-face">—</div>').join('');
+  document.getElementById('roll-result').style.display = 'none';
+}
+
+function rollDice() {
+  const n     = Math.max(1, Math.min(4, +document.getElementById('num-dice').value || 1));
+  const faces = +document.getElementById('dice-faces').value || 6;
+  const dice  = document.getElementById('dice-visual').children;
+
+  /* Animação */
+  [...dice].forEach(d => { d.classList.add('rolling'); d.textContent = '?'; });
+
+  setTimeout(() => {
+    lastRoll = Array.from({length: n}, () => Math.ceil(Math.random() * faces));
+    let results = [...lastRoll];
+
+    /* Aplica carta se selecionada */
+    if (selectedCard) {
+      results = results.map(r => SPECIAL_CARDS.find(c => c.id === selectedCard).modifier(r));
+    }
+
+    const total = results.reduce((a,b) => a+b, 0);
+
+    [...dice].forEach((d, i) => {
+      d.classList.remove('rolling');
+      d.textContent = results[i] ?? lastRoll[i];
+      d.classList.toggle('hit', results[i] >= Math.ceil(faces * 0.67));
+    });
+
+    const resultEl = document.getElementById('roll-result');
+    resultEl.style.display = 'block';
+    document.getElementById('roll-total').textContent = total;
+    document.getElementById('roll-detail').textContent =
+      n > 1
+        ? `Dados: ${lastRoll.join(' + ')}${selectedCard ? ' → (com carta: '+results.join(' + ')+')' : ''} = ${total}`
+        : selectedCard
+          ? `Dado: ${lastRoll[0]} → com carta: ${results[0]}`
+          : `Dado: ${results[0]}`;
+
+    /* Atualiza também probabilidade de captura com o dado rolado */
+    updateCapture();
+  }, 420);
+}
+
+/* ── Distribuição D6 ────────────────────────────────────────── */
+function updateDistChart() {
+  const n = Math.max(1, Math.min(3, +document.getElementById('dist-dice').value || 1));
+  const chart = document.getElementById('dist-chart');
+
+  /* Calcular probabilidades por soma */
+  const probs = {};
+  const total = Math.pow(6, n);
+
+  function count(current, remaining) {
+    if (remaining === 0) { probs[current] = (probs[current] || 0) + 1; return; }
+    for (let i = 1; i <= 6; i++) count(current + i, remaining - 1);
+  }
+  count(0, n);
+
+  const min = n, max = n * 6;
+  const maxCount = Math.max(...Object.values(probs));
+
+  chart.innerHTML = '';
+  for (let v = min; v <= max; v++) {
+    const cnt = probs[v] || 0;
+    const pct = ((cnt / total) * 100).toFixed(1);
+    const w   = ((cnt / maxCount) * 100).toFixed(1);
+    chart.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-label">${v}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${w}%"></div></div>
+        <div class="bar-pct">${pct}%</div>
+      </div>`;
+  }
+}
+
+/* ── Probabilidade de captura ───────────────────────────────── */
+function updateCapture() {
+  const dist     = +document.getElementById('dist-target').value || 1;
+  const pieces   = +document.getElementById('pieces-active').value || 1;
+  document.getElementById('dist-target-val').textContent = dist;
+
+  /* Com 1 dado D6: prob de cair exactamente na casa */
+  const pSingle = dist >= 1 && dist <= 6 ? (1/6) : 0;
+
+  /* Com múltiplas peças: prob de PELO MENOS UMA capturar */
+  const pAtLeastOne = 1 - Math.pow(1 - pSingle, pieces);
+
+  document.getElementById('capture-pct').textContent =
+    (pAtLeastOne * 100).toFixed(1) + '%';
+  document.getElementById('capture-detail').textContent =
+    pieces > 1
+      ? `Com ${pieces} peças activas, a probabilidade de pelo menos uma capturar sobe para ${(pAtLeastOne*100).toFixed(1)}%. ` +
+        `(Base por peça: ${(pSingle*100).toFixed(1)}%)`
+      : dist > 6
+        ? 'O alvo está fora do alcance de um único dado D6.'
+        : `Há ${(pSingle*100).toFixed(1)}% de hipótese de cair exatamente nessa casa com 1 dado D6.`;
+}
+
+/* ── Cartas especiais ───────────────────────────────────────── */
+function renderSpecialCards() {
+  const grid = document.getElementById('special-cards');
+  grid.innerHTML = SPECIAL_CARDS.map(c => `
+    <div class="sp-card" id="card-${c.id}" onclick="selectCard('${c.id}')">
+      <div class="sp-card-name">${c.name}</div>
+      <div class="sp-card-effect">${c.effect}</div>
+      <div class="sp-card-bonus">${c.bonus}</div>
+    </div>`).join('');
+}
+
+function selectCard(id) {
+  if (selectedCard === id) {
+    selectedCard = null;
+    document.querySelectorAll('.sp-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('card-bonus-val').textContent   = '—';
+    document.getElementById('card-bonus-label').textContent = 'seleciona uma carta';
+    document.getElementById('card-bonus-detail').textContent = '';
+    return;
+  }
+  selectedCard = id;
+  document.querySelectorAll('.sp-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('card-' + id).classList.add('selected');
+
+  const card = SPECIAL_CARDS.find(c => c.id === id);
+
+  /* Simula 100k resultados para obter média com esta carta */
+  let sum = 0, samples = 100000;
+  for (let i = 0; i < samples; i++) {
+    sum += card.modifier(Math.ceil(Math.random() * 6));
+  }
+  const avg = (sum / samples).toFixed(2);
+
+  document.getElementById('card-bonus-val').textContent   = card.bonus;
+  document.getElementById('card-bonus-label').textContent = card.name + ' — efeito activo';
+  document.getElementById('card-bonus-detail').textContent =
+    card.desc + ` Média estimada com esta carta: ~${avg} (D6 normal: ~3.50)`;
+}
+
+/* ── Arrancar ────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

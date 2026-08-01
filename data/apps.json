@@ -1,0 +1,29 @@
+{
+  "apps": [
+    {
+      "id": "example-app",
+      "name": "Em Breve",
+      "type": "app",
+      "category": "Produtividade",
+      "status": "coming-soon",
+      "version": "0.1",
+      "size": "—",
+      "releaseDate": "",
+      "developer": "Belardino Capessa",
+      "description": "A primeira aplicação da Capessa Studios está em desenvolvimento. Fica atento às novidades.",
+      "shortDesc": "A primeira aplicação da Capessa Studios está a caminho.",
+      "image": "",
+      "icon": "",
+      "color": "#2471A3",
+      "featured": false,
+      "platforms": ["Android"],
+      "links": {
+        "download": "",
+        "store": ""
+      },
+      "screenshots": [],
+      "features": [],
+      "tags": ["em breve"]
+    }
+  ]
+}

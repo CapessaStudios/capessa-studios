@@ -1,0 +1,267 @@
+/* ============================================================
+   CAPESSA STUDIOS — animations.css
+   ============================================================ */
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes scrollDot {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(212,175,55,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-25px, 20px) scale(0.95); }
+  66%       { transform: translate(20px, -15px) scale(1.04); }
+}
+
+/* ── Scroll reveal ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Hero entrance ────────────────────────────────────────── */
+.hero-eyebrow  { animation: fadeUp 0.7s ease both; animation-delay: 0.1s; }
+.hero-title    { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
+.hero-tagline  { animation: fadeUp 0.7s ease both; animation-delay: 0.35s; }
+.hero-stats    { animation: fadeUp 0.7s ease both; animation-delay: 0.45s; }
+.hero-ctas     { animation: fadeUp 0.7s ease both; animation-delay: 0.55s; }
+.hero-scroll   { animation: fadeIn 1s ease both;   animation-delay: 1.2s; }
+
+/* ── Orb animation ───────────────────────────────────────── */
+.orb-1 { animation: orbFloat1 14s ease-in-out infinite; }
+.orb-2 { animation: orbFloat2 18s ease-in-out infinite; }
+.orb-3 { animation: orbFloat1 12s ease-in-out infinite reverse; }
+
+/* ── Skeleton loading ─────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--bg-3) 25%,
+    var(--surface-h) 50%,
+    var(--bg-3) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+/* ── Logo pulse ───────────────────────────────────────────── */
+.logo-icon { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Card hover glow ──────────────────────────────────────── */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(212,175,55,0.04), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
+
+/* ── Loading spinner ──────────────────────────────────────── */
+.spinner {
+  width: 32px; height: 32px;
+  border: 2.5px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+
+/* ── Theme toggle animation ───────────────────────────────── */
+#theme-toggle i {
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* ── Page transition ──────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.4s ease;
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   ANIMAÇÕES AVANÇADAS — Fase 2
+   ============================================================ */
+
+/* ── 1. Noise texture overlay ─────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+[data-theme='light'] body::after { opacity: 0.015; }
+
+/* ── 2. Cursor personalizado ──────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html { cursor: none; }
+
+  #cs-cursor {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    mix-blend-mode: difference;
+  }
+  #cs-cursor-ring {
+    width: 34px; height: 34px;
+    border: 1.5px solid rgba(212,175,55,0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: left 0.12s ease, top 0.12s ease, width 0.25s ease, height 0.25s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+  #cs-cursor.hovering {
+    width: 6px; height: 6px;
+    background: var(--gold);
+  }
+  #cs-cursor-ring.hovering {
+    width: 46px; height: 46px;
+    border-color: rgba(212,175,55,0.8);
+  }
+  #cs-cursor.clicking { transform: translate(-50%, -50%) scale(0.7); }
+  #cs-cursor-ring.clicking { border-color: var(--gold); }
+}
+
+/* ── 3. Tilt 3D nos cards ─────────────────────────────────── */
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+.project-card.tilt-active {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 30px rgba(212,175,55,0.08);
+}
+
+/* ── 4. Page transition overlay ───────────────────────────── */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--gold);
+  z-index: 100000;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+#page-transition.slide-in  {
+  animation: pageSlideIn 0.38s cubic-bezier(0.77,0,0.18,1) forwards;
+}
+#page-transition.slide-out {
+  animation: pageSlideOut 0.38s cubic-bezier(0.77,0,0.18,1) forwards;
+}
+@keyframes pageSlideIn {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+@keyframes pageSlideOut {
+  from { transform: scaleX(1); transform-origin: right; }
+  to   { transform: scaleX(0); transform-origin: right; }
+}
+
+/* ── 5. Typewriter cursor blink ───────────────────────────── */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: var(--gold);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── 6. Parallax hero elements ────────────────────────────── */
+.hero-content { will-change: transform; }
+.hero-bg      { will-change: transform; }
+
+/* ── 7. Particle canvas ───────────────────────────────────── */
+#hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* ── 8. Counter improved styling ──────────────────────────── */
+[data-count] {
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ludo Chaos — A evolução do clássico Ludo com cartas especiais, multiplayer online e modos de jogo únicos. Um jogo da Capessa Studios." />
+  <meta name="keywords" content="Ludo Chaos, jogo de tabuleiro, multiplayer, Capessa Studios" />
+  <title>Ludo Chaos — Capessa Studios</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ludo Chaos — Capessa Studios" />
+  <meta property="og:description" content="A evolução do clássico Ludo com cartas especiais e multiplayer online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://capessa-studios.github.io/projects/ludo-chaos/" />
+
+  <!-- Font Awesome: CDN principal, fallback offline -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onerror="this.onerror=null;this.href='../../assets/fonts/fontawesome/css/all.min.css';" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+  <link rel="stylesheet" href="../../css/pages.css" />
+
+  <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../../manifest.webmanifest" />
+
+  <script>
+    (function(){
+      const t = localStorage.getItem('cs_theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<!-- data-project tells loader.js which games.json entry powers this page -->
+<body class="page-enter" data-project="ludo-chaos">
+
+  <!-- NAV -->
+  <nav id="navbar" role="navigation">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <div class="logo-icon">CS</div>
+        <div class="logo-text">CAPESSA<span>STUDIOS</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Início</a></li>
+        <li><a href="../../pages/games.html" class="active">Jogos</a></li>
+        <li><a href="../../pages/apps.html">Aplicações</a></li>
+        <li><a href="../../pages/web-games.html">Jogos Web</a></li>
+        <li><a href="../../pages/projects.html">Projetos</a></li>
+        <li><a href="../../pages/news.html">Notícias</a></li>
+        <li><a href="../../pages/about.html">Sobre</a></li>
+        <li><a href="../../pages/contact.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <i class="fas fa-search search-icon"></i>
+          <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+        </div>
+        <button class="nav-btn" id="theme-toggle" aria-label="Alternar tema">
+          <i class="fas fa-sun"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="../../index.html"><i class="fas fa-home fa-fw"></i> Início</a>
+    <a href="../../pages/games.html"><i class="fas fa-gamepad fa-fw"></i> Jogos</a>
+    <a href="../../pages/apps.html"><i class="fas fa-mobile-alt fa-fw"></i> Aplicações</a>
+    <a href="../../pages/web-games.html"><i class="fas fa-globe fa-fw"></i> Jogos Web</a>
+    <a href="../../pages/projects.html"><i class="fas fa-flask fa-fw"></i> Projetos</a>
+    <a href="../../pages/news.html"><i class="fas fa-newspaper fa-fw"></i> Notícias</a>
+    <a href="../../pages/about.html"><i class="fas fa-building fa-fw"></i> Sobre</a>
+    <a href="../../pages/contact.html"><i class="fas fa-envelope fa-fw"></i> Contacto</a>
+    <div class="mobile-search">
+      <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+    </div>
+  </div>
+
+  <main>
+
+    <!-- PROJECT HERO -->
+    <section class="project-hero">
+      <div class="container project-hero-inner">
+        <nav class="breadcrumb reveal" aria-label="Localização">
+          <a href="../../index.html">Início</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <a href="../../pages/games.html">Jogos</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span>Ludo Chaos</span>
+        </nav>
+
+        <div class="project-hero-top reveal">
+          <div class="project-logo" id="project-logo" aria-hidden="true">LC</div>
+          <div class="project-title-block">
+            <h1 class="page-title" id="project-name" style="margin-bottom:0;">Ludo Chaos</h1>
+            <div class="project-badges" id="project-badges">
+              <span class="card-badge released">Lançado</span>
+              <span class="card-badge">Board Game</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="project-desc reveal" id="project-tagline">
+          A evolução do clássico Ludo com cartas especiais e multiplayer online.
+        </p>
+
+        <p class="project-desc reveal" id="project-description" style="margin-top:-16px;">
+          A carregar descrição...
+        </p>
+
+        <div class="project-ctas reveal" id="project-ctas">
+          <span class="btn btn-primary" style="opacity:0.5;pointer-events:none;">
+            <i class="fas fa-play" aria-hidden="true"></i> A carregar...
+          </span>
+        </div>
+
+        <div class="info-bar reveal" id="project-info-bar">
+          <div class="info-stat">
+            <div class="info-stat-value">—</div>
+            <div class="info-stat-label">A carregar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" aria-label="Recursos">
+      <div class="container">
+        <header class="section-header reveal">
+          <div class="section-eyebrow">
+            <span class="tag"><i class="fas fa-star" aria-hidden="true"></i> Recursos</span>
+          </div>
+          <h2 class="section-title">O que o jogo oferece</h2>
+          <p class="section-desc">Tudo o que torna o Ludo Chaos diferente do Ludo tradicional.</p>
+        </header>
+        <div class="feature-grid reveal" id="project-features">
+          <div class="no-content" style="grid-column:1/-1;">A carregar recursos...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section" style="background:var(--bg-2);" aria-label="Screenshots">
+      <div class="container">
+        <header class="section-header reveal">
+          <div class="section-eyebrow">
+            <span class="tag"><i class="fas fa-images" aria-hidden="true"></i> Galeria</span>
+          </div>
+          <h2 class="section-title">Screenshots</h2>
+          <p class="section-desc">Um vislumbre do tabuleiro, cartas e interface do jogo.</p>
+        </header>
+        <div class="gallery-grid reveal" id="project-gallery">
+          <div class="gallery-item">A carregar...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAILER -->
+    <section class="section" aria-label="Trailer">
+      <div class="container">
+        <header class="section-header reveal">
+          <div class="section-eyebrow">
+            <span class="tag"><i class="fas fa-film" aria-hidden="true"></i> Vídeo</span>
+          </div>
+          <h2 class="section-title">Trailer</h2>
+        </header>
+        <div class="reveal" id="project-trailer">
+          <!-- Preenchido por loader.js com base no campo "trailer" do games.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORMS / DOWNLOAD -->
+    <section class="section" style="background:var(--bg-2);" aria-label="Plataformas e download">
+      <div class="container">
+        <header class="section-header reveal">
+          <div class="section-eyebrow">
+            <span class="tag"><i class="fas fa-download" aria-hidden="true"></i> Disponível em</span>
+          </div>
+          <h2 class="section-title">Plataformas</h2>
+          <p class="section-desc">Escolhe a tua plataforma preferida para jogar Ludo Chaos.</p>
+        </header>
+        <div class="platform-cards reveal" id="project-platforms">
+          <div class="no-content" style="grid-column:1/-1;">A carregar plataformas...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHANGELOG -->
+    <section class="section" aria-label="Atualizações">
+      <div class="container">
+        <header class="section-header reveal">
+          <div class="section-eyebrow">
+            <span class="tag"><i class="fas fa-code-branch" aria-hidden="true"></i> Histórico</span>
+          </div>
+          <h2 class="section-title">Atualizações</h2>
+          <p class="section-desc">Últimas versões e novidades do Ludo Chaos.</p>
+        </header>
+        <div class="changelog-list reveal" id="project-changelog" style="margin:0 auto;">
+          <div class="no-content">A carregar...</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon">CS</div>
+            <div class="logo-text">CAPESSA<span>STUDIOS</span></div>
+          </div>
+          <p class="footer-tagline">Transformando ideias em experiências digitais desde 2026.</p>
+          <div class="footer-social" id="footer-social-dynamic" aria-label="Redes sociais"></div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Produtos</h3>
+          <ul class="footer-links">
+            <li><a href="../../pages/games.html">Jogos</a></li>
+            <li><a href="../../pages/apps.html">Aplicações</a></li>
+            <li><a href="../../pages/web-games.html">Jogos Web</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Estúdio</h3>
+          <ul class="footer-links">
+            <li><a href="../../pages/about.html">Sobre nós</a></li>
+            <li><a href="../../pages/news.html">Notícias</a></li>
+            <li><a href="../../pages/contact.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../../pages/privacy.html">Privacidade</a></li>
+            <li><a href="../../pages/terms.html">Termos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© <span id="footer-year">2026</span> <span>Capessa Studios</span>. Todos os direitos reservados.</p>
+        <nav class="footer-legal">
+          <a href="../../pages/privacy.html">Privacidade</a>
+          <a href="../../pages/terms.html">Termos</a>
+          <a href="../../pages/contact.html">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/theme.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/loader.js"></script>
+  <script src="../../js/projects.js"></script>
+  <script src="../../js/search.js"></script>
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

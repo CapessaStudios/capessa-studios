@@ -1,0 +1,17 @@
+{
+  "lab": [
+    {
+      "id": "coming-soon",
+      "name": "Experimentos em breve",
+      "category": "Experimental",
+      "status": "coming-soon",
+      "description": "O laboratório da Capessa Studios está a aquecer. Protótipos, mecânicas e experiências interativas em desenvolvimento.",
+      "shortDesc": "Protótipos e experiências interativas em desenvolvimento.",
+      "color": "#2471A3",
+      "icon": "fas fa-flask",
+      "url": "#",
+      "featured": false,
+      "tags": ["experimental", "protótipo"]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "games":    { ".read": true, ".write": "auth != null" },
+    "apps":     { ".read": true, ".write": "auth != null" },
+    "news":     { ".read": true, ".write": "auth != null" },
+    "updates":  { ".read": true, ".write": "auth != null" },
+    "tools":    { ".read": true, ".write": "auth != null" },
+    "lab":      { ".read": true, ".write": "auth != null" },
+    "settings": { ".read": true, ".write": "auth != null" }
+  }
+}

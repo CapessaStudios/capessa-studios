@@ -1,0 +1,41 @@
+{
+  "tools": {
+    "ludo-calc": {
+      "id": "ludo-calc",
+      "name": "Calculadora Ludo Chaos",
+      "category": "Boardgame",
+      "status": "released",
+      "version": "1.0",
+      "description": "Calcula probabilidades de dados, hipóteses de captura, alcance de peças e vantagens de cartas especiais no Ludo Chaos.",
+      "shortDesc": "Probabilidades, dados e cartas do Ludo Chaos num só lugar.",
+      "color": "#D4AF37",
+      "icon": "fas fa-dice",
+      "url": "tools/ludo-calc/index.html",
+      "featured": true,
+      "tags": [
+        "ludo",
+        "probabilidade",
+        "dados",
+        "calculadora"
+      ]
+    }
+  },
+  "lab": {
+    "coming-soon": {
+      "id": "coming-soon",
+      "name": "Experimentos em breve",
+      "category": "Experimental",
+      "status": "coming-soon",
+      "description": "O laboratório da Capessa Studios está a aquecer. Protótipos, mecânicas e experiências interativas em desenvolvimento.",
+      "shortDesc": "Protótipos e experiências interativas em desenvolvimento.",
+      "color": "#2471A3",
+      "icon": "fas fa-flask",
+      "url": "#",
+      "featured": false,
+      "tags": [
+        "experimental",
+        "protótipo"
+      ]
+    }
+  }
+}

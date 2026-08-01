@@ -1,0 +1,272 @@
+/* ============================================================
+   RESPONSIVE.CSS
+   Todas as media queries do site, consolidadas num único
+   ficheiro. Mantém a ordem de breakpoints: 1024px → 768px →
+   640px → 480px → 320px, para que regras mais específicas
+   (ecrãs mais pequenos) sobreponham as mais gerais.
+
+   Nada aqui deve conter propriedades base — só ajustes
+   responsivos. As regras "de sempre" continuam em style.css
+   e pages.css; este ficheiro é carregado a seguir a ambos.
+   ============================================================ */
+
+/* ============================================================
+   MIN-WIDTH — escala ascendente (tablet → desktop → wide)
+   max-width: 1600px no .container garante que o conteúdo
+   preenche o viewport em qualquer ecrã abaixo desse valor.
+   ============================================================ */
+
+/* ── 1025px+ — tablet landscape / PC pequeno ─────────────────────
+   iPad landscape, Surface, Chromebooks (1024-1199px)
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1025px) {
+  /* Nav: restaurar links no desktop */
+  .nav-links  { display: flex; }
+  .nav-search { display: flex; }
+  .hamburger  { display: none; }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── 1200px+ — PC comum (1280 / 1366 / 1440px) ───────────────────
+   A maioria dos portáteis e monitores padrão. Aqui estão as
+   mudanças de maior impacto visual.
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1200px) {
+
+  /* 4 colunas: preenche ecrãs padrão de desktop */
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .value-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* Textos centrais menos estreitos */
+  .hero-content { max-width: 960px; }
+  .section-desc { max-width: 600px; }
+  .page-desc    { max-width: 660px; }
+  .project-desc { max-width: 820px; }
+
+  /* News: 2 colunas em desktop */
+  .news-feed {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    align-items: start;
+  }
+  /* Destaque ocupa a linha inteira */
+  .news-feed .news-card[data-featured="true"] {
+    grid-column: 1 / -1;
+  }
+
+  .trailer-wrapper { max-width: 100%; }
+  .gallery-item { width: 340px; }
+
+  #updates .section-inner {
+    grid-template-columns: 1fr 360px;
+  }
+
+  .legal-content { max-width: 960px; }
+
+  /* hero tagline: menos estreito em desktop */
+  .hero-tagline { max-width: 680px; }
+
+  /* filtro de pesquisa: mais largo em desktop */
+  .filter-search { max-width: 380px; }
+
+  /* changelog: ocupa a largura total da secção */
+  .changelog-list { max-width: 100%; }
+
+  /* platform cards: colunas maiores para não ficarem muito pequenas */
+  .platform-cards {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+/* ── 1440px+ — desktop largo ─────────────────────────────────────
+   Monitores 27", portáteis QHD, ecrãs wide padrão.
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+
+  .hero-content { max-width: 1040px; }
+  .section-desc { max-width: 640px; }
+  .page-desc    { max-width: 720px; }
+  .hero-tagline { max-width: 800px; }
+
+  .founder-banner {
+    grid-template-columns: 440px 1fr;
+  }
+
+  .gallery-item { width: 380px; }
+
+  #updates .section-inner {
+    grid-template-columns: 1fr 420px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 300px 1fr 1fr 1fr;
+  }
+
+  .legal-content { max-width: 1100px; }
+}
+
+/* ── 1920px+ — Full HD e superior ────────────────────────────────
+   Monitores 27" FHD, 32" e ultrawides.
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1920px) {
+
+  .hero-content { max-width: 1160px; }
+  .section-desc { max-width: 700px; }
+  .page-desc    { max-width: 800px; }
+  .hero-tagline { max-width: 920px; }
+
+  .projects-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .value-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+
+  .gallery-item { width: 420px; }
+
+  #updates .section-inner {
+    grid-template-columns: 1fr 480px;
+  }
+
+  .legal-content { max-width: 1200px; }
+}
+
+/* ── 1024px — tablets / ecrãs médios ─────────────────────────── */
+@media (max-width: 1024px) {
+  /* Nav: hamburger em tablets — evita overflow dos links */
+  .nav-links  { display: none; }
+  .nav-search { display: none; }
+  .hamburger  { display: flex; }
+  /* Impede que overflow de outros elementos empurre os botões do nav */
+  #navbar { max-width: 100vw; overflow: hidden; }
+  .nav-inner { max-width: 100%; }
+  .nav-actions { flex-shrink: 0; }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { grid-column: 1/-1; }
+
+  #updates .section-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 768px — tablets pequenos / mobile grande ────────────────── */
+@media (max-width: 768px) {
+
+  .hero-stats {
+    gap: 20px;
+  }
+  .hero-stat-value { font-size: 1.3rem; }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .filters-inner {
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .filter-search {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .filter-buttons {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    min-width: 0;       /* impede o flex item de crescer além do pai */
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* esconde scrollbar no Firefox */
+  }
+  .filter-buttons::-webkit-scrollbar { display: none; } /* esconde no Chrome/Safari */
+  .news-card-body { padding: 20px; }  /* evita padding em volta da imagem */
+  .page-title { font-size: 1.8rem; gap: 12px; }
+  .page-title-icon { width: 42px; height: 42px; font-size: 1rem; }
+  /* contact-grid responsivo — definido em pages.css para garantir ordem de cascade */
+  .founder-card { text-align: center; justify-content: center; }
+  .info-stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .info-stat:last-child { border-bottom: none; }
+}
+
+/* ── 640px — legal / texto ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .legal-content { padding: 24px 20px; }
+}
+
+/* ── 480px — mobile ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+
+  .hero-stats {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-stat-divider { display: none; }
+
+  .section { padding: 64px 0; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.83rem;
+  }
+
+  /* Filtros: em mobile pequeno é melhor wrap do que scroll horizontal */
+  .filter-buttons {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    width: 100%;
+  }
+  .filter-btn {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+}
+
+/* ── 320px — ecrãs muito pequenos ────────────────────────────── */
+@media (max-width: 320px) {
+  .logo-text { font-size: 0.85rem; }
+  .page-title { font-size: 1.5rem; }
+  .btn { width: 100%; justify-content: center; }
+  .legal-toc a { font-size: 0.72rem; padding: 5px 10px; }
+  .filter-btn { font-size: 0.68rem; padding: 5px 8px; gap: 4px; }
+  .filter-buttons { gap: 4px; }
+}

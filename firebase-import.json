@@ -1,0 +1,298 @@
+{
+  "games": {
+    "ludo-chaos": {
+      "id": "ludo-chaos",
+      "name": "Ludo Chaos",
+      "type": "game",
+      "category": "Board Game",
+      "status": "released",
+      "version": "1.0",
+      "size": "45 MB",
+      "releaseDate": "2024",
+      "developer": "Belardino Capessa",
+      "description": "A evolução do clássico Ludo com cartas especiais, multiplayer online e modos de jogo únicos. Desafie amigos ou jogue contra bots inteligentes.",
+      "shortDesc": "A evolução do clássico Ludo com cartas especiais e multiplayer online.",
+      "image": "assets/games/ludo-chaos/cover.png",
+      "icon": "assets/games/ludo-chaos/icon.png",
+      "color": "#D4AF37",
+      "featured": true,
+      "platforms": [
+        "Android",
+        "Web",
+        "itch.io"
+      ],
+      "links": {
+        "play": "https://capessastudios.github.io/LudoChaos/",
+        "download": "https://capessa-studios.itch.io/ludo-chaos",
+        "itchio": "https://capessa-studios.itch.io/ludo-chaos",
+        "github": "https://capessastudios.github.io/LudoChaos/"
+      },
+      "trailer": "https://youtu.be/lZi4C2uHP6Y?si=pZ7YkBljx4LgpOhi",
+      "screenshots": [
+        "assets/games/ludo-chaos/screenshots/01.png",
+        "assets/games/ludo-chaos/screenshots/02.png",
+        "assets/games/ludo-chaos/screenshots/03.png"
+      ],
+      "features": [
+        "Multiplayer Online",
+        "16 Cartas Especiais",
+        "Modos Bot Inteligente",
+        "Personalização de Peças",
+        "Sistema de Moedas",
+        "Shop de Cosméticos",
+        "PWA Instalável",
+        "Funciona Offline"
+      ],
+      "tags": [
+        "multiplayer",
+        "board game",
+        "cartas",
+        "casual"
+      ]
+    }
+  },
+  "apps": {
+    "example-app": {
+      "id": "example-app",
+      "name": "Em Breve",
+      "type": "app",
+      "category": "Produtividade",
+      "status": "coming-soon",
+      "version": "0.1",
+      "size": "—",
+      "releaseDate": "",
+      "developer": "Belardino Capessa",
+      "description": "A primeira aplicação da Capessa Studios está em desenvolvimento. Fica atento às novidades.",
+      "shortDesc": "A primeira aplicação da Capessa Studios está a caminho.",
+      "image": "",
+      "icon": "",
+      "color": "#2471A3",
+      "featured": false,
+      "platforms": [
+        "Android"
+      ],
+      "links": {
+        "download": "",
+        "store": ""
+      },
+      "screenshots": [],
+      "features": [],
+      "tags": [
+        "em breve"
+      ]
+    }
+  },
+  "news": {
+    "ludo-chaos-v1-launch": {
+      "id": "ludo-chaos-v1-launch",
+      "title": "Ludo Chaos v1.0 — Lançamento Oficial",
+      "category": "Lançamento",
+      "categoryIcon": "fas fa-rocket",
+      "date": "2024-12-01",
+      "dateFormatted": "Dezembro 2024",
+      "summary": "O Ludo Chaos chega oficialmente às plataformas com multiplayer online, 16 cartas especiais e sistema de personalização completo.",
+      "content": "Após meses de desenvolvimento intensivo, o Ludo Chaos está disponível. A versão 1.0 inclui multiplayer online via Firebase, 16 cartas especiais únicas, sistema de moedas e shop de cosméticos.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": [
+        "lançamento",
+        "ludo-chaos",
+        "multiplayer"
+      ],
+      "featured": true
+    },
+    "multiplayer-online": {
+      "id": "multiplayer-online",
+      "title": "Multiplayer Online Disponível",
+      "category": "Atualização",
+      "categoryIcon": "fas fa-wifi",
+      "date": "2024-11-15",
+      "dateFormatted": "Novembro 2024",
+      "summary": "O sistema de multiplayer online com salas e matchmaking já está ativo. Jogue com amigos em qualquer parte do mundo.",
+      "content": "O sistema multiplayer usa Firebase Realtime Database para sincronização de jogadas, cartas e dados em tempo real entre todos os dispositivos.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": [
+        "multiplayer",
+        "firebase",
+        "online"
+      ],
+      "featured": false
+    },
+    "cartas-especiais": {
+      "id": "cartas-especiais",
+      "title": "16 Cartas Especiais — Conheça todas",
+      "category": "Conteúdo",
+      "categoryIcon": "fas fa-cards",
+      "date": "2024-10-20",
+      "dateFormatted": "Outubro 2024",
+      "summary": "O Ludo Chaos conta com 16 cartas especiais únicas que transformam cada partida numa experiência diferente.",
+      "content": "Cartas como Impulso, Vento, Espelho, Escudo e Caos garantem que nenhuma partida seja igual à anterior. Cada carta tem um efeito estratégico único.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": [
+        "cartas",
+        "gameplay",
+        "estratégia"
+      ],
+      "featured": false
+    },
+    "capessa-studios-fundacao": {
+      "id": "capessa-studios-fundacao",
+      "title": "Capessa Studios — O Início",
+      "category": "Estúdio",
+      "categoryIcon": "fas fa-building",
+      "date": "2024-09-01",
+      "dateFormatted": "Setembro 2024",
+      "summary": "A Capessa Studios nasce com a missão de transformar ideias em experiências digitais únicas e acessíveis a todos.",
+      "content": "Fundada por Belardino Capessa, a Capessa Studios é um estúdio indie independente focado em criar jogos e aplicações de qualidade.",
+      "image": "",
+      "game": null,
+      "tags": [
+        "estúdio",
+        "fundação"
+      ],
+      "featured": false
+    }
+  },
+  "updates": {
+    "ludo-chaos-1-0": {
+      "id": "ludo-chaos-1-0",
+      "gameId": "ludo-chaos",
+      "version": "1.0",
+      "date": "2024-12-01",
+      "title": "Lançamento Oficial",
+      "changes": [
+        "Lançamento oficial do Ludo Chaos em Android, Web e itch.io",
+        "Multiplayer online via Firebase Realtime Database",
+        "16 cartas especiais com efeitos únicos",
+        "Sistema de moedas e shop de cosméticos",
+        "Personalização de peças e tabuleiro"
+      ]
+    },
+    "ludo-chaos-0-9": {
+      "id": "ludo-chaos-0-9",
+      "gameId": "ludo-chaos",
+      "version": "0.9",
+      "date": "2026-11-15",
+      "title": "Beta Pública — Multiplayer Online",
+      "changes": [
+        "Ativado sistema de multiplayer online com salas e matchmaking",
+        "Sincronização de jogadas e dados em tempo real entre dispositivos",
+        "Correções de estabilidade na física dos dados"
+      ]
+    },
+    "ludo-chaos-0-8": {
+      "id": "ludo-chaos-0-8",
+      "gameId": "ludo-chaos",
+      "version": "0.8",
+      "date": "2026-10-20",
+      "title": "16 Cartas Especiais",
+      "changes": [
+        "Adicionadas as 16 cartas especiais: Impulso, Vento, Espelho, Escudo, Caos e mais",
+        "Rebalanceamento do modo de 2 jogadores",
+        "Melhorias na interface de seleção de cartas"
+      ]
+    }
+  },
+  "settings": {
+    "studio": {
+      "name": "Capessa Studios",
+      "founder": "Belardino Capessa",
+      "founded": "2026",
+      "tagline": "Transformando ideias em experiências digitais.",
+      "description": "Estúdio independente focado em jogos digitais, aplicações móveis e ferramentas criativas.",
+      "email": "",
+      "website": "https://capessa-studios.github.io",
+      "social": {
+        "github": "",
+        "itchio": "",
+        "twitter": "",
+        "youtube": ""
+      }
+    },
+    "stats": {
+      "games": 1,
+      "cards": 16,
+      "platforms": 4,
+      "founded": 2024
+    },
+    "team": {
+      "belardino-capessa": {
+        "id": "belardino-capessa",
+        "name": "Belardino Capessa",
+        "role": "Fundador & Desenvolvedor",
+        "roleTag": "Fundador",
+        "roleIcon": "fas fa-user-pen",
+        "bio": "Responsável pela conceção, programação e design de todos os projetos da Capessa Studios — desde a arquitetura do código até à experiência final do jogador.",
+        "photo": "",
+        "order": 1,
+        "social": [
+          {
+            "id": "github",
+            "label": "GitHub",
+            "icon": "fab fa-github",
+            "url": ""
+          },
+          {
+            "id": "itchio",
+            "label": "itch.io",
+            "icon": "fab fa-itch-io",
+            "url": ""
+          },
+          {
+            "id": "twitter",
+            "label": "Twitter",
+            "icon": "fab fa-x-twitter",
+            "url": ""
+          },
+          {
+            "id": "youtube",
+            "label": "YouTube",
+            "icon": "fab fa-youtube",
+            "url": ""
+          }
+        ]
+      }
+    }
+  },
+ "tools": {
+    "ludo-calc": {
+      "id": "ludo-calc",
+      "name": "Calculadora Ludo Chaos",
+      "category": "Boardgame",
+      "status": "released",
+      "version": "1.0",
+      "description": "Calcula probabilidades de dados, hipóteses de captura, alcance de peças e vantagens de cartas especiais no Ludo Chaos.",
+      "shortDesc": "Probabilidades, dados e cartas do Ludo Chaos num só lugar.",
+      "color": "#D4AF37",
+      "icon": "fas fa-dice",
+      "url": "tools/ludo-calc/index.html",
+      "featured": true,
+      "tags": [
+        "ludo",
+        "probabilidade",
+        "dados",
+        "calculadora"
+      ]
+    }
+  },
+  "lab": {
+    "coming-soon": {
+      "id": "coming-soon",
+      "name": "Experimentos em breve",
+      "category": "Experimental",
+      "status": "coming-soon",
+      "description": "O laboratório da Capessa Studios está a aquecer. Protótipos, mecânicas e experiências interativas em desenvolvimento.",
+      "shortDesc": "Protótipos e experiências interativas em desenvolvimento.",
+      "color": "#2471A3",
+      "icon": "fas fa-flask",
+      "url": "#",
+      "featured": false,
+      "tags": [
+        "experimental",
+        "protótipo"
+      ]
+    }
+  }
+}

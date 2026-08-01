@@ -1,0 +1,48 @@
+{
+  "studio": {
+    "name": "Capessa Studios",
+    "founder": "Belardino Capessa",
+    "founded": "2024",
+    "tagline": "Transformando ideias em experiências digitais.",
+    "description": "Estúdio independente focado em jogos digitais, aplicações móveis e ferramentas criativas.",
+    "email": "",
+    "website": "https://capessa-studios.github.io",
+    "founderPhoto": "",
+    "founderSocial": [
+      { "id": "github",  "label": "GitHub",  "icon": "fab fa-github",    "url": "" },
+      { "id": "itchio",  "label": "itch.io", "icon": "fab fa-itch-io",   "url": "" },
+      { "id": "twitter", "label": "Twitter", "icon": "fab fa-x-twitter", "url": "" },
+      { "id": "youtube", "label": "YouTube", "icon": "fab fa-youtube",   "url": "" }
+    ],
+    "social": [
+      { "id": "github",  "label": "GitHub",  "icon": "fab fa-github",    "url": "" },
+      { "id": "itchio",  "label": "itch.io", "icon": "fab fa-itch-io",   "url": "" },
+      { "id": "twitter", "label": "Twitter", "icon": "fab fa-x-twitter", "url": "" },
+      { "id": "youtube", "label": "YouTube", "icon": "fab fa-youtube",   "url": "" }
+    ]
+  },
+  "team": [
+    {
+      "id": "belardino-capessa",
+      "name": "Belardino Capessa",
+      "role": "Fundador & Desenvolvedor",
+      "roleTag": "Fundador",
+      "roleIcon": "fas fa-user-pen",
+      "bio": "Responsável pela conceção, programação e design de todos os projetos da Capessa Studios — desde a arquitetura do código até à experiência final do jogador.",
+      "photo": "",
+      "order": 1,
+      "social": [
+        { "id": "github",  "label": "GitHub",  "icon": "fab fa-github",    "url": "" },
+        { "id": "itchio",  "label": "itch.io", "icon": "fab fa-itch-io",   "url": "" },
+        { "id": "twitter", "label": "Twitter", "icon": "fab fa-x-twitter", "url": "" },
+        { "id": "youtube", "label": "YouTube", "icon": "fab fa-youtube",   "url": "" }
+      ]
+    }
+  ],
+  "stats": {
+    "games": 1,
+    "downloads": 500,
+    "platforms": 4,
+    "founded": 2024
+  }
+}

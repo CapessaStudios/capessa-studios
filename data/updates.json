@@ -1,0 +1,42 @@
+{
+  "updates": [
+    {
+      "id": "ludo-chaos-1-0",
+      "gameId": "ludo-chaos",
+      "version": "1.0",
+      "date": "2024-12-01",
+      "title": "Lançamento Oficial",
+      "changes": [
+        "Lançamento oficial do Ludo Chaos em Android, Web e itch.io",
+        "Multiplayer online via Firebase Realtime Database",
+        "16 cartas especiais com efeitos únicos",
+        "Sistema de moedas e shop de cosméticos",
+        "Personalização de peças e tabuleiro"
+      ]
+    },
+    {
+      "id": "ludo-chaos-0-9",
+      "gameId": "ludo-chaos",
+      "version": "0.9",
+      "date": "2024-11-15",
+      "title": "Beta Pública — Multiplayer Online",
+      "changes": [
+        "Ativado sistema de multiplayer online com salas e matchmaking",
+        "Sincronização de jogadas e dados em tempo real entre dispositivos",
+        "Correções de estabilidade na física dos dados"
+      ]
+    },
+    {
+      "id": "ludo-chaos-0-8",
+      "gameId": "ludo-chaos",
+      "version": "0.8",
+      "date": "2024-10-20",
+      "title": "16 Cartas Especiais",
+      "changes": [
+        "Adicionadas as 16 cartas especiais: Impulso, Vento, Espelho, Escudo, Caos e mais",
+        "Rebalanceamento do modo de 2 jogadores",
+        "Melhorias na interface de seleção de cartas"
+      ]
+    }
+  ]
+}

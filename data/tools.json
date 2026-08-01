@@ -1,0 +1,23 @@
+{
+  "tools": [
+    {
+      "id": "ludo-calc",
+      "name": "Calculadora Ludo Chaos",
+      "category": "Boardgame",
+      "status": "released",
+      "version": "1.0",
+      "description": "Calcula probabilidades de dados, hipóteses de captura, alcance de peças e vantagens de cartas especiais no Ludo Chaos.",
+      "shortDesc": "Probabilidades, dados e cartas do Ludo Chaos num só lugar.",
+      "color": "#D4AF37",
+      "icon": "fas fa-dice",
+      "url": "tools/ludo-calc/index.html",
+      "featured": true,
+      "tags": [
+        "ludo",
+        "probabilidade",
+        "dados",
+        "calculadora"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "news": [
+    {
+      "id": "ludo-chaos-v1-launch",
+      "title": "Ludo Chaos v1.0 — Lançamento Oficial",
+      "category": "Lançamento",
+      "categoryIcon": "fas fa-rocket",
+      "date": "2024-12-01",
+      "dateFormatted": "Dezembro 2024",
+      "summary": "O Ludo Chaos chega oficialmente às plataformas com multiplayer online, 16 cartas especiais e sistema de personalização completo.",
+      "content": "Após meses de desenvolvimento intensivo, o Ludo Chaos está disponível. A versão 1.0 inclui multiplayer online via Firebase, 16 cartas especiais únicas, sistema de moedas e shop de cosméticos.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": ["lançamento", "ludo-chaos", "multiplayer"],
+      "featured": true
+    },
+    {
+      "id": "multiplayer-online",
+      "title": "Multiplayer Online Disponível",
+      "category": "Atualização",
+      "categoryIcon": "fas fa-wifi",
+      "date": "2024-11-15",
+      "dateFormatted": "Novembro 2024",
+      "summary": "O sistema de multiplayer online com salas e matchmaking já está ativo. Jogue com amigos em qualquer parte do mundo.",
+      "content": "O sistema multiplayer usa Firebase Realtime Database para sincronização de jogadas, cartas e dados em tempo real entre todos os dispositivos.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": ["multiplayer", "firebase", "online"],
+      "featured": false
+    },
+    {
+      "id": "cartas-especiais",
+      "title": "16 Cartas Especiais — Conheça todas",
+      "category": "Conteúdo",
+      "categoryIcon": "fas fa-cards",
+      "date": "2024-10-20",
+      "dateFormatted": "Outubro 2024",
+      "summary": "O Ludo Chaos conta com 16 cartas especiais únicas que transformam cada partida numa experiência diferente.",
+      "content": "Cartas como Impulso, Vento, Espelho, Escudo e Caos garantem que nenhuma partida seja igual à anterior. Cada carta tem um efeito estratégico único.",
+      "image": "",
+      "game": "ludo-chaos",
+      "tags": ["cartas", "gameplay", "estratégia"],
+      "featured": false
+    },
+    {
+      "id": "capessa-studios-fundacao",
+      "title": "Capessa Studios — O Início",
+      "category": "Estúdio",
+      "categoryIcon": "fas fa-building",
+      "date": "2024-09-01",
+      "dateFormatted": "Setembro 2024",
+      "summary": "A Capessa Studios nasce com a missão de transformar ideias em experiências digitais únicas e acessíveis a todos.",
+      "content": "Fundada por Belardino Capessa, a Capessa Studios é um estúdio indie independente focado em criar jogos e aplicações de qualidade.",
+      "image": "",
+      "game": null,
+      "tags": ["estúdio", "fundação"],
+      "featured": false
+    }
+  ]
+}

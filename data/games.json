@@ -1,0 +1,45 @@
+{
+  "games": [
+    {
+      "id": "ludo-chaos",
+      "name": "Ludo Chaos",
+      "type": "game",
+      "category": "Board Game",
+      "status": "released",
+      "version": "1.0",
+      "size": "45 MB",
+      "releaseDate": "2026",
+      "developer": "Belardino Capessa",
+      "description": "A evolução do clássico Ludo com cartas especiais, multiplayer online e modos de jogo únicos. Desafie amigos ou jogue contra bots inteligentes.",
+      "shortDesc": "A evolução do clássico Ludo com cartas especiais e multiplayer online.",
+      "image": "assets/games/ludo-chaos/cover.png",
+      "icon": "assets/games/ludo-chaos/icon.png",
+      "color": "#D4AF37",
+      "featured": true,
+      "platforms": ["Android", "Web", "itch.io" ,"Apkpure"],
+      "links": {
+        "play": "https://capessastudios.github.io/LudoChaos/",
+        "download": "https://capessa-studios.itch.io/ludo-chaos",
+        "itchio": "https://capessa-studios.itch.io/ludo-chaos",
+        "github": "https://capessastudios.github.io/LudoChaos/"
+      },
+      "trailer": "https://youtu.be/lZi4C2uHP6Y?si=pZ7YkBljx4LgpOhi",
+      "screenshots": [
+        "assets/games/ludo-chaos/screenshots/01.png",
+        "assets/games/ludo-chaos/screenshots/02.png",
+        "assets/games/ludo-chaos/screenshots/03.png"
+      ],
+      "features": [
+        "Multiplayer Online",
+        "16 Cartas Especiais",
+        "Modos Bot Inteligente",
+        "Personalização de Peças",
+        "Sistema de Moedas",
+        "Shop de Cosméticos",
+        "PWA Instalável",
+        "Funciona Offline"
+      ],
+      "tags": ["multiplayer", "board game", "cartas", "casual"]
+    }
+  ]
+}
