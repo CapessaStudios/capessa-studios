@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página não encontrada — Capessa Studios" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>404 — Página não encontrada · Capessa Studios</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onerror="this.onerror=null;this.href='assets/fonts/fontawesome/css/all.min.css';" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <script>
+    (function(){
+      const t = localStorage.getItem('cs_theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <style>
+    /* ── 404 page layout ───────────────────────────── */
+    .page-404 {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Orbs background */
+    .bg-404 {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-404 .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    .bg-404 .orb-1 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+      top: -100px; right: -80px;
+      animation: orbFloat1 14s ease-in-out infinite;
+    }
+    .bg-404 .orb-2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(36,113,163,0.10) 0%, transparent 70%);
+      bottom: -80px; left: -60px;
+      animation: orbFloat2 18s ease-in-out infinite;
+    }
+
+    /* Grid texture */
+    .bg-404::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Content */
+    .content-404 {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    /* Glitch number */
+    .num-404 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(5rem, 20vw, 9rem);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--gold);
+      letter-spacing: -4px;
+      margin-bottom: 8px;
+      position: relative;
+      user-select: none;
+    }
+    .num-404::before,
+    .num-404::after {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      font-family: var(--font-display);
+      font-weight: 900;
+    }
+    .num-404::before {
+      color: rgba(192, 57, 43, 0.4);
+      -webkit-text-stroke: 0;
+      animation: glitch-1 3.5s infinite;
+    }
+    .num-404::after {
+      color: rgba(36, 113, 163, 0.4);
+      -webkit-text-stroke: 0;
+      animation: glitch-2 3.5s infinite;
+    }
+    @keyframes glitch-1 {
+      0%, 90%, 100% { clip-path: none; transform: none; }
+      92%  { clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); transform: translate(-3px, 0); }
+      94%  { clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%); transform: translate(3px, 0); }
+      96%  { clip-path: polygon(0 5%,  100% 5%,  100% 15%, 0 15%); transform: translate(-2px, 0); }
+    }
+    @keyframes glitch-2 {
+      0%, 90%, 100% { clip-path: none; transform: none; }
+      93%  { clip-path: polygon(0 50%, 100% 50%, 100% 65%, 0 65%); transform: translate(3px, 0); }
+      95%  { clip-path: polygon(0 30%, 100% 30%, 100% 45%, 0 45%); transform: translate(-3px, 0); }
+      97%  { clip-path: polygon(0 80%, 100% 80%, 100% 90%, 0 90%); transform: translate(2px, 0); }
+    }
+
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 99px;
+      padding: 5px 14px;
+      margin-bottom: 22px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .error-badge i { font-size: 0.65rem; }
+
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .error-desc {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    /* Action buttons */
+    .actions-404 {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      font-size: 0.78rem;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .quick-link:hover {
+      color: var(--gold);
+      border-color: rgba(212,175,55,0.35);
+      background: rgba(212,175,55,0.06);
+    }
+    .quick-link i { font-size: 0.7rem; color: var(--gold); }
+
+    /* Mini nav logo */
+    .logo-404 {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      z-index: 10;
+    }
+    .logo-404 .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.8rem;
+      color: #0A0D14;
+    }
+    .logo-404 .logo-text {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+    }
+    .logo-404 .logo-text span { color: var(--gold); display: block; }
+
+    /* Theme toggle */
+    .theme-404 {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 36px; height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--text-2);
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    .theme-404:hover { color: var(--gold); border-color: rgba(212,175,55,0.35); }
+
+    /* Countdown redirect */
+    .redirect-hint {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      font-family: var(--font-mono);
+      margin-top: 20px;
+    }
+    .redirect-hint span { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- Mini logo -->
+  <a href="index.html" class="logo-404" aria-label="Capessa Studios — voltar ao início">
+    <img src="assets/icons/icon-192.png" alt="Capessa Studios" class="logo-img" width="34" height="34" />
+    <div class="logo-text">CAPESSA<span>STUDIOS</span></div>
+  </a>
+
+  <!-- Theme toggle -->
+  <button class="theme-404" id="theme-toggle-404" aria-label="Alternar tema">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <main class="page-404" role="main">
+
+    <!-- Background -->
+    <div class="bg-404" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="content-404">
+
+      <div class="error-badge">
+        <i class="fas fa-triangle-exclamation"></i>
+        Erro 404 · Página não encontrada
+      </div>
+
+      <div class="num-404" aria-label="Erro 404">404</div>
+
+      <h1 class="error-title">Esta página perdeu-se no multiverso</h1>
+
+      <p class="error-desc">
+        A página que procuras não existe, foi movida ou ainda está em desenvolvimento.<br />
+        Mas não te preocupes — tens muito para explorar aqui.
+      </p>
+
+      <div class="actions-404">
+        <a href="index.html" class="btn btn-primary">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          Voltar ao Início
+        </a>
+        <a href="pages/games.html" class="btn btn-secondary">
+          <i class="fas fa-gamepad" aria-hidden="true"></i>
+          Ver Jogos
+        </a>
+      </div>
+
+      <div class="quick-links" aria-label="Links rápidos">
+        <a href="pages/apps.html"      class="quick-link"><i class="fas fa-mobile-alt"></i> Aplicações</a>
+        <a href="pages/tools.html"     class="quick-link"><i class="fas fa-wrench"></i> Ferramentas</a>
+        <a href="pages/lab.html"       class="quick-link"><i class="fas fa-flask"></i> Laboratório</a>
+        <a href="pages/news.html"      class="quick-link"><i class="fas fa-newspaper"></i> Notícias</a>
+        <a href="pages/about.html"     class="quick-link"><i class="fas fa-building"></i> Sobre</a>
+        <a href="pages/contact.html"   class="quick-link"><i class="fas fa-envelope"></i> Contacto</a>
+      </div>
+
+      <p class="redirect-hint" id="redirect-hint" aria-live="polite"></p>
+
+    </div>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script>
+    /* ── Theme toggle ───────────────────────────── */
+    const btn404 = document.getElementById('theme-toggle-404');
+    function updateIcon() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      btn404.querySelector('i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    btn404.addEventListener('click', () => {
+      if (window.ThemeManager) ThemeManager.toggle();
+      else {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('cs_theme', next); } catch(_) {}
+      }
+      updateIcon();
+    });
+    updateIcon();
+
+    /* ── Auto-redirect countdown ────────────────── */
+    const hint = document.getElementById('redirect-hint');
+    let secs = 15;
+
+    function updateHint() {
+      hint.innerHTML = `Redirecionamento automático em <span>${secs}s</span>`;
+    }
+
+    updateHint();
+    const timer = setInterval(() => {
+      secs--;
+      updateHint();
+      if (secs <= 0) {
+        clearInterval(timer);
+        window.location.replace('index.html');
+      }
+    }, 1000);
+
+    /* Cancel redirect if user interacts */
+    document.addEventListener('click', e => {
+      if (e.target.closest('a, button')) {
+        clearInterval(timer);
+        hint.textContent = '';
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>
