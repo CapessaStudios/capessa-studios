@@ -1,0 +1,42 @@
+{
+  "rules": {
+    "games":   { ".read": true, ".write": "auth != null" },
+    "apps":    { ".read": true, ".write": "auth != null" },
+    "news":    { ".read": true, ".write": "auth != null" },
+    "updates": { ".read": true, ".write": "auth != null" },
+    "settings":{ ".read": true, ".write": "auth != null" },
+    "tools":   { ".read": true, ".write": "auth != null" },
+    "lab":     { ".read": true, ".write": "auth != null" },
+
+    "reviews": {
+      ".read": true,
+      "$projectId": {
+        "$reviewId": {
+          ".write": "auth != null || (!data.exists() && newData.exists() && !newData.hasChild('reply') && (root.child('games').child($projectId).exists() || root.child('apps').child($projectId).exists()))",
+          ".validate": "newData.hasChildren(['name', 'rating', 'createdAt'])",
+          "name":      { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 40" },
+          "rating":    { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5 && newData.val() % 1 == 0" },
+          "comment":   { ".validate": "newData.isString() && newData.val().length <= 1000" },
+          "createdAt": { ".validate": "newData.isNumber() && (data.exists() ? newData.val() == data.val() : newData.val() == now)" },
+          "reply": {
+            ".validate": "newData.hasChildren(['text', 'createdAt'])",
+            "text":      { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 1000" },
+            "createdAt": { ".validate": "newData.isNumber()" },
+            "$other":    { ".validate": false }
+          },
+          "$other": { ".validate": false }
+        }
+      }
+    },
+
+    "stats": {
+      ".read": true,
+      "downloads": {
+        "$projectId": {
+          ".write": "auth != null || ((root.child('games').child($projectId).exists() || root.child('apps').child($projectId).exists()) && newData.isNumber() && newData.val() == (data.exists() ? data.val() : 0) + 1)",
+          ".validate": "newData.isNumber()"
+        }
+      }
+    }
+  }
+}
