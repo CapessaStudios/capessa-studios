@@ -1,0 +1,58 @@
+/* ============================================================
+   CAPESSA STUDIOS — lightbox.css
+   Imagens em ecrã inteiro ao clicar (screenshots, previews…)
+   ============================================================ */
+.gallery-item img,
+img[data-lightbox] { cursor: zoom-in; }
+
+.cs-lb {
+  position: fixed; inset: 0; z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(5, 7, 12, .94);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  touch-action: pan-y pinch-zoom;
+}
+.cs-lb.open { display: flex; animation: cs-lb-in .18s ease; }
+@keyframes cs-lb-in { from { opacity: 0; } to { opacity: 1; } }
+
+.cs-lb-stage {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 56px 16px;
+}
+.cs-lb-img {
+  max-width: 100%; max-height: 100%;
+  object-fit: contain; border-radius: 8px;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, .6);
+  user-select: none; -webkit-user-drag: none;
+  transition: opacity .15s ease;
+}
+.cs-lb-img.loading { opacity: .25; }
+
+.cs-lb-btn {
+  position: absolute; display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  color: #fff; background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .2);
+  font-size: 16px; cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.cs-lb-btn:hover { background: rgba(212, 175, 55, .25); border-color: #D4AF37; color: #D4AF37; }
+.cs-lb-btn:focus-visible { outline: 2px solid #D4AF37; outline-offset: 2px; }
+.cs-lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; }
+.cs-lb-prev  { left: 12px;  top: 50%; transform: translateY(-50%); }
+.cs-lb-next  { right: 12px; top: 50%; transform: translateY(-50%); }
+.cs-lb-prev[hidden], .cs-lb-next[hidden], .cs-lb-count[hidden] { display: none; }
+
+.cs-lb-count {
+  position: absolute; top: calc(22px + env(safe-area-inset-top, 0px)); left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, .85); font-size: 13px; letter-spacing: .5px;
+  font-family: var(--font-mono, monospace);
+}
+
+@media (max-width: 600px) {
+  .cs-lb-stage { padding: 56px 0; }
+  .cs-lb-img { border-radius: 0; }
+  .cs-lb-prev, .cs-lb-next { width: 38px; height: 38px; opacity: .85; }
+}
