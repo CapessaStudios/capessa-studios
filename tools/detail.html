@@ -292,7 +292,7 @@
 
       // Badges
       document.getElementById('project-badges').innerHTML =
-        statusBadge(item.status) +
+        statusBadge(item.status, item) +
         (item.category ? `<span class="card-badge" style="color:${color};background:${color}18;border:1px solid ${color}30">${item.category}</span>` : '') +
         (item.version  ? `<span class="card-badge">v${item.version}</span>` : '');
 
