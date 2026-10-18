@@ -1,82 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Página inicial -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/games.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
+  <!-- Aplicações -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/pages/apps.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/web-games.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
+  <!-- Projectos -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/pages/projects.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 
+  <!-- DeviceLab -->
   <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/news.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <loc>https://capessastudios.github.io/capessa-studios/projects/detail.html?id=device-lab</loc>
   </url>
 
+  <!-- Jogos -->
   <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/games.html</loc>
   </url>
 
+  <!-- Jogos web -->
   <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/contact.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/web-games.html</loc>
   </url>
 
-  <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/privacy.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://capessastudios.github.io/capessa-studios/pages/terms.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
+  <!-- Ferramentas -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/pages/tools.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 
+  <!-- Laboratório -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/pages/lab.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 
+  <!-- Notícias -->
+  <url>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/news.html</loc>
+  </url>
+
+  <!-- Sobre a Capessa Studios -->
+  <url>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/about.html</loc>
+  </url>
+
+  <!-- Contactos -->
+  <url>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/contact.html</loc>
+  </url>
+
+  <!-- Política de privacidade -->
+  <url>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/privacy.html</loc>
+  </url>
+
+  <!-- Termos de utilização -->
+  <url>
+    <loc>https://capessastudios.github.io/capessa-studios/pages/terms.html</loc>
+  </url>
+
+  <!-- LudoChaos -->
   <url>
     <loc>https://capessastudios.github.io/capessa-studios/projects/ludo-chaos/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
 
 </urlset>
